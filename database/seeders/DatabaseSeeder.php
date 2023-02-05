@@ -2,7 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use Illuminate\Database\Seeder;
+use App\Models\Post;
+use App\Models\Role;
+use App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +17,25 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        User::factory(10)->create();
+        Category::create([
+            'name' => 'Cryptocurrency',
+            'slug' => 'cryptocurrency'
+        ]);
+        Category::create([
+            'name' => 'Finance',
+            'slug' => 'finance'
+        ]);
+        Category::create([
+            'name' => 'Economy',
+            'slug' => 'economy'
+        ]);
+        Role::create([
+            'role' => 'Admin'
+        ]);
+        Role::create([
+            'role' => 'Member'
+        ]);
+        Post::factory(30)->create();
     }
 }
