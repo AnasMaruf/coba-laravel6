@@ -28,7 +28,13 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="/">My Dashboard</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-in-left"></i> Logout</a></li>
+            <li>
+              <form action="/logout" method="post">
+                @method('delete')
+                @csrf
+                <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-in-left"></i></button>
+              </form>
+            </li>
           </ul>
         </li>
         @else
