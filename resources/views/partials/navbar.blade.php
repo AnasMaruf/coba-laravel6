@@ -20,30 +20,31 @@
             <a class="nav-link {{ ($active === 'about')? 'active': '' }}" href="/about" tabindex="-1" aria-disabled="true">About</a>
           </li>
         </ul>
+        <ul class="navbar-nav ms-auto">
         @auth
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Welcome back, {{ auth()->user->name }}
+            Welcome back, {{ auth()->user()->name }}
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="/">My Dashboard</a></li>
+            <li><a class="dropdown-item" href="/dashboard">My Dashboard</a></li>
             <li><hr class="dropdown-divider"></li>
             <li>
-              <form action="/logout" method="post">
-                @method('delete')
+              <form action="/logout" method="POST">
                 @csrf
-                <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-in-left"></i></button>
+                <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-in-left"></i>Logout</button>
               </form>
             </li>
           </ul>
         </li>
         @else
-        <ul class="navbar-nav ms-auto">
+        
           <li class="nav-item">
             <a class="nav-link {{ ($active === 'login')? 'active': '' }}" href="/login" tabindex="-1" aria-disabled="true"><i class="bi bi-box-arrow-in-right"></i> Login</a>
           </li>
-        </ul>
+        
         @endauth
+      </ul>
       </div>
     </div>
 </nav>
