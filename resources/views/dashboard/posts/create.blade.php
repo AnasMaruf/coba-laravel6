@@ -8,7 +8,7 @@
       @csrf
         <div class="mb-3">
           <label for="title" class="form-label">Title</label>
-          <input type="text" class="form-control @error('title') is-invalid  @enderror" id="title" name="title" {{ old('title') }}>
+          <input type="text" class="form-control @error('title') is-invalid  @enderror" id="title" name="title" value="{{ old('title') }}" >
           @error('title')
             <div class="invalid-feedback">
                 {{ $message }}
@@ -31,19 +31,19 @@
               @if(old('category_id') == $category->id)
               <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
               @else
-              <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+              <option value="{{ $category->id }}">{{ $category->name }}</option>
               @endif
             @endforeach
             </select>
           </div>
           <div class="mb-3">
-            <label for="image" class="form-label">Post Image</label>
-            <img class="img-preview img-fluid mb-3 col-sm-5" src="" alt="">
-            <input class="form-control @error('image') is-invalid  @enderror" type="file" id="image" name="image" onchange="previewImage()">
+            <label for="formFile" class="form-label">Post Image</label>
+            <img class="img-preview img-fluid mb-3 col-sm-5" >
+            <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image" onchange="previewImage()">
             @error('image')
-              <div class="invalid-feedback">
-                {{ $message }}
-              </div>
+            <div class="invalid-feedback">
+              {{ $message }}
+            </div>  
             @enderror
           </div>
           <div class="mb-3">
