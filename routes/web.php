@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoriesPostsController;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\DashboardPostsController;
 use Illuminate\Support\Facades\Route;
@@ -57,3 +58,4 @@ Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'check
 Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth')->parameters([
     'posts' => 'post:slug'
 ]);
+Route::resource('/dashboard/categories', CategoriesPostsController::class)->middleware('auth')->middleware('admin');
